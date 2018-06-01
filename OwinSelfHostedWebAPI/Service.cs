@@ -15,7 +15,7 @@ namespace OwinSelfHostedWebAPI
         public Service(string baseAddress)
         {
             _baseAddress = baseAddress;
-            ServiceName = "TT Excel Service";
+            ServiceName = "Web API Service";
             CanStop = true;
             CanPauseAndContinue = true;
             AutoLog = true;
@@ -23,14 +23,14 @@ namespace OwinSelfHostedWebAPI
 
         protected override void OnStart(string[] args)
         {
-            _log.Info("Starting Excel Query Service (window service mode)...");
+            _log.Info("Starting Web API Query Service (window service mode)...");
             _svc = WebApp.Start<Startup>(_baseAddress);
             base.OnStart(args);
         }
 
         protected override void OnStop()
         {
-            _log.Info("Stopping Excel Query Service");
+            _log.Info("Stopping Web API Query Service");
             _svc?.Dispose();
             base.OnStop();
         }
